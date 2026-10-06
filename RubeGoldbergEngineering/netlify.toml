@@ -1,0 +1,8 @@
+# Netlify settings: the site is the folder itself (no build step),
+# plus one serverless function for "What next?" suggestions.
+[build]
+  publish = "."
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"

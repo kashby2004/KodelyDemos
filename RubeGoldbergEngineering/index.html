@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Machine Lab</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="app" id="app">
+        <header class="topbar">
+            <div class="brand">
+                <span class="brand-icon" aria-hidden="true"></span>
+                <h1>Machine Lab</h1>
+            </div>
+            <button id="podBtn" class="pod-badge" title="Change pod"></button>
+            <div class="spacer"></div>
+            <button id="soundBtn" class="small-btn" title="Sound on or off"></button>
+            <button id="saveFileBtn" class="small-btn"><span class="ico" data-icon="download"></span><span class="txt">Save to file</span></button>
+            <button id="openFileBtn" class="small-btn"><span class="ico" data-icon="folder"></span><span class="txt">Open file</span></button>
+            <input type="file" id="fileInput" accept=".json,application/json" hidden>
+        </header>
+
+        <main class="workspace">
+            <div class="main-col">
+            <section class="tray card" id="tray" aria-label="Pieces"></section>
+            <div class="board-wrap card" id="boardWrap">
+                <div class="board" id="board">
+                    <svg class="links" id="links" aria-hidden="true"></svg>
+                </div>
+                <div class="message" id="message">
+                    <button id="sayBtn" class="say-btn" title="Read it to me"><span class="ico" data-icon="speaker"></span></button>
+                    <span id="msgPic" class="msg-pic"></span>
+                    <span id="msgText"></span>
+                </div>
+            </div>
+            </div>
+
+            <aside class="panel">
+                <button id="goBtn" class="go-btn"><span class="go-tri"></span>GO!</button>
+                <div class="rules card" id="rules"></div>
+                <div class="tools">
+                    <button id="undoBtn" class="tool-btn"><span class="ico" data-icon="undo"></span>Undo</button>
+                    <button id="trashBtn" class="tool-btn trash"><span class="ico" data-icon="trash"></span>Trash</button>
+                    <button id="clearBtn" class="tool-btn"><span class="ico" data-icon="broom"></span>Start over</button>
+                </div>
+                <button id="nextBtn" class="tool-btn wide idea"><span class="ico" data-icon="bulb"></span>What next?</button>
+                <button id="diagramBtn" class="tool-btn wide"><span class="ico" data-icon="paper"></span>Make my diagram</button>
+            </aside>
+        </main>
+    </div>
+
+    <!-- "Are you sure?" box -->
+    <div id="confirm" class="overlay hidden" role="dialog" aria-modal="true">
+        <div class="dialog card">
+            <div id="confirmPic" class="dialog-pic"></div>
+            <h2 id="confirmText"></h2>
+            <div class="dialog-btns">
+                <button id="confirmYes" class="big-btn yes"><span class="ico" data-icon="check"></span><span id="confirmYesText">Yes</span></button>
+                <button id="confirmNo" class="big-btn no"><span class="ico" data-icon="cross"></span><span id="confirmNoText">No</span></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pick your pod -->
+    <div id="podPicker" class="overlay hidden" role="dialog" aria-modal="true">
+        <div class="dialog card wide">
+            <h2>Who is building?</h2>
+            <div class="pod-grid" id="podGrid"></div>
+        </div>
+    </div>
+
+    <!-- Printable diagram -->
+    <div id="diagram" class="diagram-view hidden">
+        <div class="diagram-controls">
+            <button id="printBtn" class="big-btn yes"><span class="ico" data-icon="printer"></span>Print</button>
+            <button id="closeDiagramBtn" class="big-btn no"><span class="ico" data-icon="back"></span>Back</button>
+        </div>
+        <div class="paper" id="paper"></div>
+    </div>
+
+    <div id="ghost" class="ghost hidden"></div>
+    <div id="confetti" class="confetti" aria-hidden="true"></div>
+
+    <script src="pieces.js"></script>
+    <script src="sim.js"></script>
+    <script src="suggest.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
